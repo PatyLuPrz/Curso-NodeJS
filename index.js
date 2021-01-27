@@ -1,19 +1,12 @@
-// const https = require('http');
+const express = require('express');
+const colors = require('colors');
 
-// https.createServer(function(request,response){
-//     response.writeHead(200,{'content-type':'text/html'});
-//     response.write('<h1>Hola mundo!</h1>');
-//     response.end();
-// }).listen(3000);
+const server = express();
 
-var http = require('http');
-var server = http.createServer(function(request, response){
-    response.writeHead(200,{'Content-Type':'text/html; charset=UTF-8'});
-    response.end('<h1>Hola, mundo! :)</h1>');
-})
-
-// Se arranca el servidor
-server.listen(3000,function(){
-    console.log('Servidor iniciado en 127.0.0.1:3000');
+server.listen(3000,() =>{
+    console.log('Server on port 3000'.red);
 });
 
+server.get('/',(req,res)=>{
+    res.send('<h1>Hola mundo! esto es Express y NodeJS</<h1>');
+});
